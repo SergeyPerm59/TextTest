@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace lab
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int size = 10;
+            int[] mas = new int[size];
+            Random rnd = new Random();
+            for (int i = 0; i < size; i++)
+                mas[i] = rnd.Next(-100, 100);
+
+            for (int i = 0; i < size; i++)
+                Console.Write(mas[i] + " ");
+            Console.WriteLine("\n\n");
+            int maxIndex = 0;
+            int max = int.MinValue;
+            for (int i = 0; i < mas.Length; i++)
+            {
+                if (max < mas[i])
+                {
+                    max = mas[i];
+                    maxIndex = i;
+                }
+            }
+            Console.Write("max = {0}, maxIndex = {1}", max, maxIndex);
+            Console.WriteLine("\n\n");
+
+            for (int i = 0; i < size - 1;  i++)
+            {
+                if (i >= maxIndex)
+                {   
+                    mas[i] = mas[i + 1];
+                }
+            }
+            size--;
+            Array.Resize(ref mas, size);
+            for (int i = 0; i < size; i++)
+            {
+                Console.Write(mas[i] + " ");
+            }
+            Console.ReadLine();
+        }
+    }
+}
