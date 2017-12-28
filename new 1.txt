@@ -1,0 +1,58 @@
+            Console.Write("Введите размер массива: ");
+            int size = Convert.ToInt32(Console.ReadLine());
+            int max = int.MinValue;
+            int min = int.MaxValue;
+            Random rnd = new Random();
+            int[] mas = new int[size];
+
+            for(int i = 0; i < mas.Length; i++)
+            {
+                mas[i] = rnd.Next(-100, 100);
+                Console.Write(mas[i] + "   ");
+            }
+            for(int i = 0; i < mas.Length; i++)
+            {
+                if(max < mas[i])
+                    max = mas[i];
+                if(min > mas[i])
+                    min = mas[i];
+            }
+            //Удаление Максимального элемента
+            Console.WriteLine("\n\nМассив после удаления максимального числа max = {0}", max);
+            for (int i = 0; i < mas.Length; i++)
+            {
+                if (mas[i] != max)
+                    Console.Write(mas[i] + "   ");
+            }
+            //удаление минимального элемента
+            Console.WriteLine("\n\nМассив после удаления минимального числа min = {0}", min);
+            for (int i = 0; i < mas.Length; i++)
+            {
+                if (mas[i] != min)
+                    Console.Write(mas[i] + "   ");
+            }
+
+            //Удаление количство элементов с заданного элемента
+            Console.Write("\nВведите с какого элемента будем удалять: ");
+            int nDel = Convert.ToInt32(Console.ReadLine());
+            Console.Write("\nВведите сколько элементов будем удалять: ");
+            int kDel = Convert.ToInt32(Console.ReadLine());
+            int j = 0;
+            int[] temp = new int[size-kDel];
+            for (int i = 0; i <= size - 1; i++)
+            {
+                if(i < nDel -1 || i >= (kDel + nDel) - 1) 
+                    {
+                    temp[j] = mas[i];
+                    j++;
+                    }
+            }
+            mas = temp;
+            Console.WriteLine("\nБыло удаленно {0} элемента, начиная с {1}", kDel, nDel);
+            for (int i = 0; i < mas.Length; i++)
+            {
+                Console.Write(mas[i] + "   ");
+            }
+
+
+            Console.ReadLine();
